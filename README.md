@@ -1,2 +1,2 @@
-# HPL
-Hybrid PDDL parser
+# HPD
+Hybrid PDDL Description

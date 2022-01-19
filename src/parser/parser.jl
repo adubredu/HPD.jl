@@ -8,9 +8,9 @@ using Base: @kwdef
 
 include("types.jl")
 include("signature.jl")
-include("generic_action.jl")
-include("generic_domain.jl")
-include("generic_problem.jl")
+include("generic/generic_action.jl")
+include("generic/generic_domain.jl")
+include("generic/generic_problem.jl")
 include("requirements.jl")
 
 "PDDL keyword."

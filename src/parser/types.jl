@@ -1,3 +1,11 @@
+struct Signature{N}
+    name::Symbol
+    type::Symbol
+    args::NTuple{N, Var}
+    argtypes::NTuple{N, Symbol}
+end
+
+
 abstract type Action end
 struct GenericAction <: Action
     name::Symbol # Name of action
@@ -39,9 +47,3 @@ abstract type State end
 end
 
 
-struct Signature{N}
-    name::Symbol
-    type::Symbol
-    args::NTuple{N, Var}
-    argtypes::NTuple{N, Symbol}
-end
