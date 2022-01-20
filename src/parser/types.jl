@@ -49,6 +49,7 @@ abstract type State end
     constraints::Union{Term,Nothing} # Constraints formula
     external_constraints::Union{Term,Nothing} # External constraints formula
     continuous_inits::Union{Term, Nothing} # Continuous variables
+    objective_function::Term # Objective function to optimize
 
 end
 

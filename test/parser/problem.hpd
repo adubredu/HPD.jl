@@ -15,5 +15,6 @@
            (at ball2 rooma))
     (:goal (at ball1 roomb))
     (:continuous_inits (math (xr==3.0) (yr==5.0) (xb==0.0) (yb==0.0)))
-    (:external_constraints (math (2x+4y==5) (6x+7y<=10) (5x**2 + 3x**3 == 6)))
+    (:external_constraints (math (2x+4y==5) (6x+7y<=10) (5x**2+3x**3==6)))
+    (:objective_function (math (x**2+y**2)))
 )
