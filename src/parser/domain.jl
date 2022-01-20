@@ -114,6 +114,8 @@ function parse_action(expr::Vector)
     params, types = parse_typed_vars(get(args, :parameters, []))
     precondition = parse_formula(get(args, :precondition, []))
     effect = parse_formula(args[:effect])
-    return GenericAction(name, params, types, precondition, effect)
+    println("Got cont arg: ",args[:continuous_precondition])
+    cont_prec = parse_formula(args[:continuous_precondition])
+    return GenericAction(name, params, types, precondition, effect, cont_prec)
 end
 body_field_parsers[:domain][:action] = parse_action

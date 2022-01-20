@@ -1,7 +1,7 @@
 "Generic PDDL action definition."
 
 GenericAction(term::Term, precond::Term, effect::Term) =
-    GenericAction(term.name, get_args(term), Symbol[], precond, effect)
+    GenericAction(term.name, get_args(term), Symbol[], precond, effect, Compound(:cont_precond, Term[]))
 
 Base.:(==)(a1::GenericAction, a2::GenericAction) = (a1.name == a2.name &&
     Set(a1.args) == Set(a2.args) && Set(a1.types) == Set(a2.types) &&

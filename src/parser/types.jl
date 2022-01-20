@@ -13,6 +13,7 @@ struct GenericAction <: Action
     types::Vector{Symbol} # Parameter types
     precond::Term # Precondition of action
     effect::Term # Effect of action
+    cont_precond::Term #Continuous precondition of action
 end
 
 
