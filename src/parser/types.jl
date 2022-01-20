@@ -48,7 +48,8 @@ abstract type State end
     metric::Union{Term,Nothing} # Metric formula
     constraints::Union{Term,Nothing} # Constraints formula
     external_constraints::Union{Term,Nothing} # External constraints formula
-    continuous_inits::Union{Term, Nothing} # Continuous variables
+    continuous_inits::Union{Term, Nothing} # Continuous init variables 
+    continuous_goals::Union{Term, Nothing} # Continuous goal variables
     objective_function::Term # Objective function to optimize
 
 end

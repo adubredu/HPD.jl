@@ -60,6 +60,13 @@ end
 parse_cont_inits(::Nothing) = nothing
 head_field_parsers[:problem][:continuous_inits] = parse_cont_inits
 
+"Parse goal values for continuous variables"
+function parse_cont_goals(expr::Vector) 
+    return parse_formula(expr[2])
+end
+parse_cont_goals(::Nothing) = nothing
+head_field_parsers[:problem][:continuous_goals] = parse_cont_goals
+
 "Parse external numerical constraints formula in planning problem."
 function parse_ext_constraints(expr::Vector) 
     return parse_formula(expr[2])

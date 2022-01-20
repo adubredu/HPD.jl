@@ -1,7 +1,7 @@
 module Parser
 
 export parse_domain, parse_problem, parse_pddl, @pddl, @pddl_str
-export load_domain, load_problem, initstate
+export load_domain, load_problem, initstate, goalstate
 
 using ParserCombinator, Julog
 using Base: @kwdef

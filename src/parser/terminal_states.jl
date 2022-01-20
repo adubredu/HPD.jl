@@ -41,7 +41,12 @@ end
 function goalstate(domain::Domain, problem::GenericProblem)
     types = Set{Term}([Compound(ty, Term[o]) for (o, ty) in problem.objtypes])
     facts = Set{Term}(flatten_conjs(problem.goal))
+    cont_inits = problem.continuous_goals
     state = GenericState(types, facts, Dict{Symbol,Any}())
+    for var in cont_inits.args 
+        exp = Meta.parse(var.name)
+        state.values[exp.args[2]] = exp.args[3]
+    end
     return state
 end
 
