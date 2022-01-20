@@ -31,7 +31,13 @@ function parse_formula(expr::Vector)
         name = expr[1]
         args = []
         for exp in expr[2:end]  
-            nrest = string(exp[1])*string(exp[2])
+            println("exp $exp")
+            if length(exp) > 1
+                nrest = string(exp[1])*string(exp[2])
+            else
+                nrest = string(exp[1])
+            end
+            nrest = replace(nrest, "**"=>"^")
             push!(args, Const(nrest))
         end
         return Compound(name, args)
