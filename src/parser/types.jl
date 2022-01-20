@@ -50,3 +50,8 @@ abstract type State end
 end
 
 
+mutable struct GenericState <: State
+    types::Set{Compound} # Object type declarations
+    facts::Set{Term} # Boolean-valued fluents
+    values::Dict{Symbol,Any} # All other fluents
+end

@@ -8,6 +8,7 @@ using Base: @kwdef
 
 include("types.jl")
 include("signature.jl")
+include("generic/generic_state.jl")
 include("generic/generic_action.jl")
 include("generic/generic_domain.jl")
 include("generic/generic_problem.jl")
