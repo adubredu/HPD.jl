@@ -1,6 +1,6 @@
 #init state
 function initstate(domain::Domain, problem::GenericProblem)
-    return initstate(domain, problem.objtypes, problem.init)
+    return initstate(domain, problem.objtypes, problem.continuous_inits, problem.init)
 end
 
 function initstate(domain::Domain, objtypes::AbstractDict)
@@ -8,9 +8,9 @@ function initstate(domain::Domain, objtypes::AbstractDict)
 return GenericState(types, Set{Term}(), Dict{Symbol,Any}())
 end
 
-function initstate(domain::Domain, objtypes::AbstractDict,
+function initstate(domain::Domain, objtypes::AbstractDict, cont_inits::Compound,
     fluents::AbstractVector)
-    state = initstate(interpreter, domain, objtypes)
+    state = initstate(domain, objtypes)
     for t in fluents
         if t.name == :(==) # Non-Boolean fluents
             @assert length(t.args) == 2 "Assignments must have two arguments."
@@ -21,8 +21,12 @@ function initstate(domain::Domain, objtypes::AbstractDict,
             push!(state.facts, t)
         end
     end
+    for var in cont_inits.args 
+        exp = Meta.parse(var.name)
+        state.values[exp.args[2]] = exp.args[3]
+    end
     return state
-end
+end 
 
 function initstate(domain::Domain, objtypes::AbstractDict,
     fluents::AbstractDict)

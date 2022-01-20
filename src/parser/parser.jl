@@ -1,7 +1,7 @@
 module Parser
 
 export parse_domain, parse_problem, parse_pddl, @pddl, @pddl_str
-export load_domain, load_problem
+export load_domain, load_problem, initstate
 
 using ParserCombinator, Julog
 using Base: @kwdef
@@ -12,6 +12,7 @@ include("generic/generic_state.jl")
 include("generic/generic_action.jl")
 include("generic/generic_domain.jl")
 include("generic/generic_problem.jl")
+include("terminal_states.jl")
 include("requirements.jl")
 
 "PDDL keyword."
