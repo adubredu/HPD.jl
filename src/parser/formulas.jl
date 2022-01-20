@@ -26,12 +26,10 @@ function parse_formula(expr::Vector)
             args = Term[parse_formula(expr[i:i]) for i in 2:length(expr)]
             return Compound(name, args)
         end
-    elseif length(expr) > 1 && expr[1] == :math 
-        println("Entered")
+    elseif length(expr) > 1 && expr[1] == :math  
         name = expr[1]
         args = []
-        for exp in expr[2:end]  
-            println("exp $exp")
+        for exp in expr[2:end]   
             if length(exp) > 1
                 nrest = string(exp[1])*string(exp[2])
             else

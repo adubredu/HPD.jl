@@ -47,6 +47,9 @@ abstract type State end
     goal::Term # Goal formula
     metric::Union{Term,Nothing} # Metric formula
     constraints::Union{Term,Nothing} # Constraints formula
+    external_constraints::Union{Term,Nothing} # External constraints formula
+    continuous_inits::Union{Term, Nothing} # Continuous variables
+
 end
 
 
