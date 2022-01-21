@@ -13,7 +13,7 @@ continuous action effects, action dynamics functions, and arbitrary objective fu
 `Enter` on your keyboard to install this package.
 4. Press the `Backspace` key on your keyboard to return to the REPL
 
-## Usage
+## Usage Hybrid PDDL Description
 ```julia
 using HPD 
 
