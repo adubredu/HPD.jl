@@ -1,7 +1,7 @@
 ## Parsers for PDDL formulas ##
 
 "Parse to first-order-logic formula."
-function parse_formula(expr::Vector)
+function parse_formula(expr::Vector) 
     if length(expr) == 0
         return Const(:true)
     elseif length(expr) == 1 && isa(expr[1], Vector)
@@ -10,7 +10,7 @@ function parse_formula(expr::Vector)
         return expr[1]
     elseif length(expr) == 1 && isa(expr[1], Union{Symbol,Number,String})
         return Const(expr[1])
-    elseif length(expr) > 1 && isa(expr[1], Symbol)
+    elseif length(expr) > 1 && isa(expr[1], Symbol) && expr[1] != :math
         name = expr[1]
         if (name in (:exists, :forall) &&
             (any(e == :- for e in expr[2]) || all(e isa Var for e in expr[2])))
@@ -26,6 +26,22 @@ function parse_formula(expr::Vector)
             args = Term[parse_formula(expr[i:i]) for i in 2:length(expr)]
             return Compound(name, args)
         end
+    elseif length(expr) > 1 && expr[1] == :math  
+        name = expr[1]
+        args = []
+        for exp in expr[2:end]   
+            if length(exp) > 1
+                nrest = string(exp[1])*string(exp[2])
+            else
+                nrest = string(exp[1])
+            end
+            nrest = replace(nrest, "|*"=>")*")
+            nrest = replace(nrest, "|"=>"(")
+            nrest = replace(nrest, "**"=>"^")
+            
+            push!(args, Const(nrest))
+        end
+        return Compound(name, args)
     else
         error("Could not parse $(unparse(expr)) to PDDL formula.")
     end
