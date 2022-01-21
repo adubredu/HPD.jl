@@ -17,6 +17,7 @@ continuous action effects, action dynamics functions, and arbitrary objective fu
 ```julia
 using HPD 
 
+# get path to .hpd file
 path = joinpath(dirname(pathof(HPD)), "..", "examples") 
 
 # loading domain file
