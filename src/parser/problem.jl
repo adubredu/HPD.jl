@@ -52,3 +52,31 @@ function parse_constraints(expr::Vector)
 end
 parse_constraints(::Nothing) = nothing
 head_field_parsers[:problem][:constraints] = parse_constraints
+
+"Parse initializations for continuous variables"
+function parse_cont_inits(expr::Vector) 
+    return parse_formula(expr[2])
+end
+parse_cont_inits(::Nothing) = nothing
+head_field_parsers[:problem][:continuous_inits] = parse_cont_inits
+
+"Parse goal values for continuous variables"
+function parse_cont_goals(expr::Vector) 
+    return parse_formula(expr[2])
+end
+parse_cont_goals(::Nothing) = nothing
+head_field_parsers[:problem][:continuous_goals] = parse_cont_goals
+
+"Parse external numerical constraints formula in planning problem."
+function parse_ext_constraints(expr::Vector) 
+    return parse_formula(expr[2])
+end
+parse_ext_constraints(::Nothing) = nothing
+head_field_parsers[:problem][:external_constraints] = parse_ext_constraints
+
+"Parse objective function of planning problem."
+function parse_objective_function(expr::Vector) 
+    return parse_formula(expr[2])
+end
+parse_objective_function(::Nothing) = nothing
+head_field_parsers[:problem][:objective_function] = parse_objective_function

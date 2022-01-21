@@ -13,6 +13,9 @@ struct GenericAction <: Action
     types::Vector{Symbol} # Parameter types
     precond::Term # Precondition of action
     effect::Term # Effect of action
+    cont_precond::Term #Continuous precondition of action
+    cont_effect::Term 
+    dynamics::Term
 end
 
 
@@ -44,6 +47,16 @@ abstract type State end
     goal::Term # Goal formula
     metric::Union{Term,Nothing} # Metric formula
     constraints::Union{Term,Nothing} # Constraints formula
+    external_constraints::Union{Term,Nothing} # External constraints formula
+    continuous_inits::Union{Term, Nothing} # Continuous init variables 
+    continuous_goals::Union{Term, Nothing} # Continuous goal variables
+    objective_function::Term # Objective function to optimize
+
 end
 
 
+mutable struct GenericState <: State
+    types::Set{Compound} # Object type declarations
+    facts::Set{Term} # Boolean-valued fluents
+    values::Dict{Symbol,Any} # All other fluents
+end
