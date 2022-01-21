@@ -14,7 +14,24 @@ continuous action effects, action dynamics functions, and arbitrary objective fu
 4. Press the `Backspace` key on your keyboard to return to the REPL
 
 ## Usage
-To be included soon.
+```julia
+using HPD 
+
+path = joinpath(dirname(pathof(HPD)), "..", "examples") 
+
+# loading domain file
+domain = load_domain(joinpath(path, "domain.hpd"))
+
+#loading problem file
+problem = load_problem(joinpath(path, "problem.hpd"))
+
+#Getting initial state as well as all initial continuous variable values
+init = initstate(domain, problem)
+
+#Getting goal state as well as all goal continuous variable values
+goal = goalstate(domain, problem)
+
+```
 
 ## Acknowledgements
 This package extends and heavily relies on [ztangent's](https://github.com/ztangent/) awesome [PDDL.jl](https://github.com/JuliaPlanners/PDDL.jl) package.

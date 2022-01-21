@@ -35,7 +35,10 @@ function parse_formula(expr::Vector)
             else
                 nrest = string(exp[1])
             end
+            nrest = replace(nrest, "|*"=>")*")
+            nrest = replace(nrest, "|"=>"(")
             nrest = replace(nrest, "**"=>"^")
+            
             push!(args, Const(nrest))
         end
         return Compound(name, args)

@@ -113,7 +113,7 @@ function parse_action(expr::Vector)
     name = args[:action]
     params, types = parse_typed_vars(get(args, :parameters, []))
     precondition = parse_formula(get(args, :precondition, []))
-    effect = parse_formula(args[:effect]) 
+    effect = parse_formula(args[:effect])  
     cont_prec = parse_formula(args[:continuous_precondition])
     cont_eff = parse_formula(args[:continuous_effect])
     dynamics = parse_formula(args[:dynamics])
