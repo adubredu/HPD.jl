@@ -13,7 +13,15 @@ continuous action effects, action dynamics functions, and arbitrary objective fu
 `Enter` on your keyboard to install this package.
 4. Press the `Backspace` key on your keyboard to return to the REPL
 
-## Usage Hybrid PDDL Description
+## Usage 
+Alongside the usual requirements of a PDDL 2.1 domain file, actions in an HPD domain file require fields `:continuous_precondition`, `:dynamics` and `continuous_effect`.
+
+An HPD problem file requires fields `:continuous_inits`, `:continuous_goals`, `:external_constraints` and `:objective_function`.
+
+See [examples](examples) for examples of `domain.hpd` and `problem.hpd` files.
+
+Here's a usage example of the HPD parser:
+
 ```julia
 using HPD 
 
