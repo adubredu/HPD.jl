@@ -1,4 +1,4 @@
-# HPD.jl: Hybrid PDDL Description 
+# HPD.jl 
 ## Parser for the Hybrid PDDL Description language.
 
 HPD is an extension of PDDL to enable the specification of numerical constraints
