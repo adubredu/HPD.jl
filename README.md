@@ -42,6 +42,6 @@ goal = goalstate(domain, problem)
 
 ```
 
-## Acknowledgements
+## Acknowledgement
 This package extends and heavily relies on [ztangent's](https://github.com/ztangent/) awesome [PDDL.jl](https://github.com/JuliaPlanners/PDDL.jl) package.
 
