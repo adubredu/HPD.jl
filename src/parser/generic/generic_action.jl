@@ -24,6 +24,8 @@ end
 
 get_effect(action::GenericAction) = action.effect
 
+get_action(domain::GenericDomain, name::Symbol) = domain.actions[name]
+
 function get_effect(action::GenericAction, args)
     subst = Subst(k => v for (k, v) in zip(action.args, args))
     return substitute(action.effect, subst)
